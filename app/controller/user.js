@@ -23,9 +23,8 @@ class UserController extends Controller {
 
   async create() {
     const ctx = this.ctx;
-    console.log('ctx.request.body:',ctx.request.body)
-    const { name, age } = ctx.request.body;
-    const user = await ctx.model.User.create({ name, age });
+    const { username, password } = ctx.request.body;
+    const user = await ctx.model.User.create({ username, password });
     ctx.status = 201;
     ctx.body = user;
   }
@@ -39,8 +38,8 @@ class UserController extends Controller {
       return;
     }
 
-    const { name, age } = ctx.request.body;
-    await user.update({ name, age });
+    const { username, password } = ctx.request.body;
+    await user.update({ username, password });
     ctx.body = user;
   }
 

@@ -40,7 +40,12 @@ module.exports = appInfo => {
     port: 3306,
     username:'root',
     password:'fuckfuck',
-    database: 'blog_development',
+    // database: 'blog_development',
+    database: 'blog',
+    define: {
+      freezeTableName: true,
+      underscored: false,
+    },
   };
 
   config.security = {
