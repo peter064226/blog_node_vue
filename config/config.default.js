@@ -23,6 +23,33 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+
+  config.sequelize = {
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    database: 'heroku--default',
+  };
+
+  config.sequelize = process.env.NODE_ENV=="production"?{
+    dialect: 'postgres',
+    connectionUri:process.env.DATABASE_URL
+  }:{
+    dialect: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    username:'root',
+    password:'fuckfuck',
+    database: 'blog_development',
+  };
+
+  config.security = {
+    csrf: {
+      enable: false
+    },
+    domainWhiteList: [ '*' ]
+  };
+
   return {
     ...config,
     ...userConfig,

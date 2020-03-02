@@ -1,1 +1,1 @@
-web: egg-scripts start
+web: export NODE_ENV='production' && egg-scripts start
