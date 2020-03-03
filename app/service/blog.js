@@ -9,8 +9,7 @@ class BlogService extends Service {
         return await this.ctx.model.Blog.findByPk(parseInt(id));
     }
     async addBlog(blog){
-        const blog = await ctx.model.Blog.create(blog);
-        return blog
+        return await ctx.model.Blog.create(blog);
     }
     async removeBlog(id){
         const blog = await ctx.model.Blog.findByPk(id);
