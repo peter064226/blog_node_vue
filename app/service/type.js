@@ -1,9 +1,8 @@
 const Service = require('egg').Service
 
 class TypeService extends Service {
-    async getTypes(){
-        const query = { limit: parseInt(ctx.query.limit), offset: parseInt(ctx.query.offset) }
-        const types = await ctx.model.Type.findAll(query)
+    async getTypes(query){
+        const types = await this.ctx.model.Type.findAll(query)
         return types
     }
     async getType(){
@@ -33,3 +32,5 @@ class TypeService extends Service {
         await type.update({ name });
     }
 }
+
+module.exports = TypeService;

@@ -15,7 +15,7 @@ class UserController extends Controller {
     // ctx.session.bitch=2
     // ctx.body = ctx.session
   }
-  
+
   async show() {
     const ctx = this.ctx;
     ctx.body = await ctx.model.User.findByPk(toInt(ctx.params.id));
@@ -54,6 +54,15 @@ class UserController extends Controller {
 
     await user.destroy();
     ctx.status = 200;
+  }
+
+  async getCurrentUser() {
+    this.ctx.body = this.ctx.user || {}
+  }
+
+  async logout(){
+    this.ctx.logout()
+    this.ctx.body = {success:true}
   }
 }
 

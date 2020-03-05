@@ -8,6 +8,7 @@ module.exports = {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
       username:STRING,
       password:STRING,
+      avatar:STRING,
       lastLoginTime:DATE,
       oauthName:STRING,
       oauthId:INTEGER,

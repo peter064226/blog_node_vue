@@ -1,0 +1,57 @@
+<template>
+  <div>
+    <Table :columns="columns" :data="list">
+      <template slot-scope="{ row, index }" slot="action">
+        <!-- <Button size="small" style="margin-right: 5px">详细</Button> -->
+        <Button
+          type="primary"
+          size="small"
+          style="margin-right: 5px"
+          @click="e=>$router.push(`/addBlog/${row.id}`)"
+        >详细</Button>
+        <Button type="error" size="small" @click="removeBlog(index)">删除</Button>
+      </template>
+    </Table>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      columns: [
+        {
+          title: "标题",
+          key: "title"
+        },
+        {
+          title: "简介",
+          key: "intro"
+        },
+        {
+          title: "操作",
+          slot: "action"
+        }
+      ],
+      list: []
+    };
+  },
+  created() {
+    this.getBlogs();
+  },
+  methods: {
+    async getBlogs() {
+      const res = await axios.get("/api/blogs");
+      this.list = res.data;
+    },
+    async removeBlog(idx) {
+        const res = await axios.delete(`/api/blogs/${this.list[idx].id}`)
+        this.list.splice(idx,1)
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+</style>

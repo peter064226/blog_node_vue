@@ -9,8 +9,10 @@ function toInt(str) {
 
 class BlogController extends Controller {
   async index() {
-    const query = { limit: toInt(this.ctx.query.limit), offset: toInt(this.ctx.query.offset) };
-    this.ctx.body = await this.ctx.service.blog.getBlogs(query);
+    
+    // const query = { limit: toInt(this.ctx.query.limit), offset: toInt(this.ctx.query.offset) };
+    
+    this.ctx.body = await this.ctx.service.blog.getBlogs(this.ctx.query);
   }
   
   async show() {
@@ -18,11 +20,14 @@ class BlogController extends Controller {
   }
 
   async create() {
-    const ctx = this.ctx;
-    const { blogname, password } = ctx.request.body;
-    const blog = await ctx.service.blog.addBlog({ blogname, password });
-    ctx.status = 201;
-    ctx.body = blog;
+    this.ctx.validate({
+      title: { type: 'string' },
+      intro: { type: 'string' },
+      content: { type: 'string' },
+  });
+    const blog = await this.ctx.service.blog.addBlog(this.ctx.request.body);
+    this.ctx.status = 201;
+    this.ctx.body = {success:true,msg:'增加成功'};
   }
 
   async update() {
@@ -42,13 +47,9 @@ class BlogController extends Controller {
   async destroy() {
     const ctx = this.ctx;
     const blog = await ctx.service.blog.removeBlog(ctx.params.id);
-    if (!blog) {
-      ctx.status = 404;
-      return;
+    if (blog){
+      ctx.body={success:true}
     }
-
-    await blog.destroy();
-    ctx.status = 200;
   }
 }
 

@@ -7,8 +7,11 @@ module.exports = app => {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
     username: STRING,
     password:STRING,
+    avatar:STRING,
     lastLoginTime:DATE,
     isAdmin:BOOLEAN,
+    oauthName:STRING,
+    oauthId:INTEGER,
   });
   return User;
 };

@@ -9,9 +9,8 @@ function toInt(str) {
 
 class TypeController extends Controller {
   async index() {
-    const ctx = this.ctx;
-    const query = { limit: toInt(ctx.query.limit), offset: toInt(ctx.query.offset) };
-    ctx.body = await ctx.service.type.getTypes(query);
+    const query = { limit: toInt(this.ctx.query.limit), offset: toInt(this.ctx.query.offset) };
+    this.ctx.body = await this.ctx.service.type.getTypes(query);
   }
   
   async show() {
