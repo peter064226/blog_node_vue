@@ -10,7 +10,7 @@ class CommentService extends Service {
                 model: this.ctx.model.User,
                 attributes: ['username','avatar'],
                 as: 'user',
-                where: { id: Sequelize.col('comment.userId') }
+                // where: { id: Sequelize.col('comment.userId') }
             }]
          })
         return comments
