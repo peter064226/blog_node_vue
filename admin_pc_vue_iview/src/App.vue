@@ -5,8 +5,7 @@
         <div>
           <span style="color:white;font-size:25px;">博客后台管理中心</span>
         </div>
-        <Menu mode="horizontal" theme="dark" active-name="1">
-          <!-- <div class="layout-logo"></div> -->
+        <!-- <Menu mode="horizontal" theme="dark" active-name="1">
           <div class="layout-nav">
             <MenuItem name="1">
               <Icon type="ios-navigate"></Icon>Item 1
@@ -21,7 +20,7 @@
               <Icon type="ios-paper"></Icon>Item 4
             </MenuItem>
           </div>
-        </Menu>
+        </Menu> -->
       </Header>
       <Layout>
         <Sider hide-trigger :style="{background: '#fff'}">
@@ -36,11 +35,11 @@
           </Menu>
         </Sider>
         <Layout :style="{padding: '0 24px 24px'}">
-          <Breadcrumb :style="{margin: '24px 0'}">
+          <!-- <Breadcrumb :style="{margin: '24px 0'}">
             <BreadcrumbItem>Home</BreadcrumbItem>
             <BreadcrumbItem>Components</BreadcrumbItem>
             <BreadcrumbItem>Layout</BreadcrumbItem>
-          </Breadcrumb>
+          </Breadcrumb> -->
           <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
             <router-view />
           </Content>

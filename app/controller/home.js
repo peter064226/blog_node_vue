@@ -6,7 +6,7 @@ class HomeController extends Controller {
   async index() {
     const { ctx } = this;
     ctx.session.fuck = 1
-    ctx.body = 'ctx.session';
+    ctx.redirect('/public/vue/index.html')
   }
 }
 

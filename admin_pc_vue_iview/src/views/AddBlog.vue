@@ -8,6 +8,9 @@
           </Select>
         </Input>
       </FormItem>
+      <FormItem label prop="svg">
+        <Input v-model="blog.svg" placeholder="图标"></Input>
+      </FormItem>
       <FormItem label prop="title">
         <Input v-model="blog.intro" type="textarea" :rows="4" placeholder="简介" />
       </FormItem>
@@ -34,30 +37,32 @@ export default {
     return {
       blog: {
         title: "",
-        content: "content",
+        content: "",
         intro: "",
+        svg: "",
         typeId: 0
       },
       types: []
     };
   },
   beforeRouteEnter(to, from, next) {
-    let blogId = to.params.id;
-    if(blogId===undefined){
-      next()
-    }else{
+    let blogId = to.params.blogId;
+    if (blogId === undefined) {
+      next();
+    } else {
       axios(`/api/blogs/${blogId}`).then(res => {
-      next(vm => {
-        vm.blog = res.data;
-        // vm.blog.content = marked(vm.blog.content);
-        // vm.getComments();
+        next(vm => {
+          vm.blog = res.data;
+          vm.rawData = { ...res.data };
+          // vm.blog.content = marked(vm.blog.content);
+          // vm.getComments();
+        });
       });
-    });
     }
-    
   },
-  beforeRouteUpdate(){
-    this.blog={}
+
+  beforeRouteUpdate() {
+    this.blog = {};
   },
   created() {
     this.getTypes();
@@ -66,10 +71,36 @@ export default {
     async getTypes() {
       const res = await axios.get("/api/types");
       this.types = res.data;
-      this.blog.typeId = res.data[0].id;
+      if (this.blog.typeId === 0) this.blog.typeId = res.data[0].id;
+    },
+    getModifyData() {
+      let data = undefined;
+      for (let k in this.rawData) {
+        if (this.rawData[k] !== this.blog[k]) {
+          if (!data) data = {};
+          data[k] = this.blog[k];
+        }
+      }
+      return data;
     },
     async addBlog() {
-      const res = await axios.post("/api/blogs", this.blog);
+      let blogId = this.$route.params.blogId;
+      if (blogId) {
+        let data = this.getModifyData();
+        if (data==undefined) {
+          this.$Message.warning("未修改任何数据");
+          return
+        }
+        const res = await axios.put(
+          `/api/blogs/${blogId}`,
+          this.getModifyData()
+        );
+        // this.$router.push('/blogs')
+        this.$router.back()
+      } else {
+        const res = await axios.post("/api/blogs", this.blog);
+        this.$refs['blogForm'].resetFields()
+      }
       // if (res.data.success) {
       //   this.$Message.success(res.data.msg);
       //   this.$refs["blogForm"].resetFields();

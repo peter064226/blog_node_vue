@@ -1,6 +1,9 @@
 <template>
   <div>
     <Table :columns="columns" :data="list">
+      <template slot-scope="{ row }" slot="svg">
+        <div style="font-size:60px;" v-html="row.svg"></div>
+      </template>
       <template slot-scope="{ row, index }" slot="action">
         <!-- <Button size="small" style="margin-right: 5px">详细</Button> -->
         <Button
@@ -21,6 +24,11 @@ export default {
   data() {
     return {
       columns: [
+        {
+          title: "图标",
+          slot: "svg",
+          width:100,
+        },
         {
           title: "标题",
           key: "title"

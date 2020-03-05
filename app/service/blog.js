@@ -19,13 +19,13 @@ class BlogService extends Service {
         const resBlog = blog.destroy()
         return await resBlog
     }
-    async updateBlog() {
+    async updateBlog(blogObj) {
         const ctx = this.ctx;
         const id = parseInt(ctx.params.id);
         const blog = await ctx.model.Blog.findByPk(id);
         if (!blog) { return; }
-        const { name } = ctx.request.body;
-        await blog.update({ name });
+        // const { name } = ctx.request.body;
+        await blog.update(blogObj);
     }
 }
 

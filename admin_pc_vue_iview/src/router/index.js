@@ -11,7 +11,7 @@ const routes = [
     redirect: '/blogs'
   },
   {
-    path: '/addBlog/:id?',
+    path: '/addBlog/:blogId?',
     name: 'AddBlog',
     component: AddBlog
   },
@@ -28,7 +28,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior: () => ({ y: 0 }),
 })
 
 export default router

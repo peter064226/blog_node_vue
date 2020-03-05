@@ -38,9 +38,7 @@ class BlogController extends Controller {
       ctx.status = 404;
       return;
     }
-
-    const { blogname, password } = ctx.request.body;
-    await blog.update({ blogname, password });
+    await blog.update(ctx.request.body);
     ctx.body = blog;
   }
 
