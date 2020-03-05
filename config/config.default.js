@@ -73,6 +73,13 @@ module.exports = appInfo => {
     proxy: true,
   };
 
+  config.onerror={
+    all(err, ctx) {
+      console.log(err)
+      // this.logger.error(err)
+    },
+  }
+
   config.security = {
     csrf: {
       enable: false
