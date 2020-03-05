@@ -38,6 +38,11 @@ module.exports = appInfo => {
       freezeTableName: true,
       underscored: false,
     },
+    pool: {
+      max: 5,
+      min: 0,
+      idle: 30000
+    },
   } : {
       dialect: 'mysql',
       host: '127.0.0.1',
@@ -63,6 +68,11 @@ module.exports = appInfo => {
       define: {
         freezeTableName: true,
         underscored: false,
+      },
+      pool: {
+        max: 5,
+        min: 0,
+        idle: 30000
       },
     };
 
