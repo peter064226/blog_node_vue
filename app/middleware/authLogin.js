@@ -1,10 +1,9 @@
 module.exports = options =>{
     return async function authLogin(ctx,next){
-        console.log(ctx.session.openId)
-        if(ctx.session.openId){
+        if(ctx.user || ctx.method=="GET"){
             await next()
         }else{
-            ctx.body={data:'没有登录'}
+            throw new Error('请登陆后重试')
         }
     }
 }

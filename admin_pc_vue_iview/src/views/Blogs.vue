@@ -4,6 +4,9 @@
       <template slot-scope="{ row }" slot="svg">
         <div style="font-size:60px;" v-html="row.svg"></div>
       </template>
+      <template slot-scope="{ row }" slot="username">
+        <div >{{row.user.username}}</div>
+      </template>
       <template slot-scope="{ row }" slot="type">
         <div  >{{types.filter(e=>e.id==row.typeId)[0].name}}</div>
       </template>
@@ -32,6 +35,11 @@ export default {
           title: "图标",
           slot: "svg",
           width:100,
+        },
+        {
+          title: "作者",
+          slot: "username",
+          width:150,
         },
         {
           title: "分类",

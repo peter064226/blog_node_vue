@@ -7,7 +7,7 @@
             {{ele.title}}  
           </router-link>
           <span style="display: flex;color: rgb(135, 157, 175);">
-            <span style="display:flex;align-items: center;margin-right:5px;">
+            <!-- <span style="display:flex;align-items: center;margin-right:5px;">
               <span v-html="ele.svg" style="margin-right:5px;font-size:20px;"></span>
               <span>Web</span>
             </span>
@@ -22,11 +22,15 @@
             <span v-if="ele.title.match(/win/ig)" style="display:flex;align-items: center;margin-right:5px;">
               <svg t="1542857339171" class="icon" style="margin-right:5px;width: 20px; height: 20px;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3271"><path d="M426.285714 574.857143v372L36.571429 893.142857v-318.285714h389.714285z m0-424.571429v376.571429H36.571429V204z m561.142857 424.571429v449.142857l-518.285714-71.428571v-377.714286h518.285714z m0-501.714286v453.714286H469.142857V144.571429z" p-id="3272"></path></svg>
               <span style="margin-right:5px;">Windows</span>
-            </span>
-            <div>{{ele.createdAt}},{{ele.viewCount}}</div>
+            </span> -->
+            <div style="font-size:14px;">
+              <Icon type="md-timer"/><i>{{new Date(ele.createdAt).toLocaleString()}} </i>
+              <Icon type="ios-bonfire" /><i>{{ele.viewCount}} </i>
+              <Icon type="ios-contact" /><i>{{ele.user.username}}</i>
+            </div>
           </span>
         </div>
-        <div class="sub" style="line-height:26px;color: #879DAF;" v-cloak>{{ele.createdAt}}</div>
+        <!-- <div class="sub" style="line-height:26px;color: #879DAF;" v-cloak>{{ele.createdAt}}</div> -->
       </div>
       <router-link :to="`/blog/${ele.id}`" class="img" style="height: 130px;display: block;position:relative;border-radius:5px;overflow:hidden;">
         <div class="canvasbg" :id="'cardbg'+idx" style="position:absolute;">

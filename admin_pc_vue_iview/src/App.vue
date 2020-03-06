@@ -78,4 +78,7 @@
   margin: 0 auto;
   margin-right: 20px;
 }
+.ivu-layout .ivu-layout-header{
+  background: #2c8bf0;
+}
 </style>

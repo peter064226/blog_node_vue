@@ -2,7 +2,14 @@ const Service = require('egg').Service
 
 class BlogService extends Service {
     async getBlogs(query) {
-        const blogs = await this.ctx.model.Blog.findAll({ where:query, attributes: ['id', 'title', 'intro','svg','typeId'] })
+        const blogs = await this.ctx.model.Blog.findAll({ 
+            where:query, 
+            attributes: ['id', 'title', 'intro','svg','typeId','createdAt','viewCount'],
+            include: [ {
+                model:this.ctx.model.User,
+                attributes: ['username'],
+            } ]
+        })
         return blogs
     }
     async getBlog(id) {

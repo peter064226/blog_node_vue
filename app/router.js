@@ -16,7 +16,7 @@ module.exports = app => {
   router.get('/api/getCurrentUser',controller.user.getCurrentUser)
   router.get('/api/logout',controller.user.logout)
   router.resources('types', '/api/types', controller.type)
-  router.resources('blogs', '/api/blogs', controller.blog)
-  router.resources('comments', '/api/comments', controller.comment)
+  router.resources('blogs', '/api/blogs', middleware.authLogin(),controller.blog)
+  router.resources('comments', '/api/comments', middleware.authLogin(),controller.comment)
   router.post('/api/admin/login',controller.admin.login)
 }
