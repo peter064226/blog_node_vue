@@ -34,21 +34,29 @@
               <Icon size="20" type="ios-analytics"></Icon>
               <router-link to="/about">关于本人</router-link>
             </MenuItem>-->
-            <Submenu name="4" v-if="user.username">
-              <template slot="title">
+            <template v-if="user.username">
+              <Submenu name="4" >
+                <template slot="title">
+                  <Icon size="20" :type="{github:'logo-github',local:'ios-contact'}[user.oauthName]"></Icon>
+                  {{user.username}}
+                </template>
+                <MenuItem name="logout" :on-select="e=>alert(9090)">退出</MenuItem>
+              </Submenu>
+              <MenuItem v-if="user.username" name="8" style="display:flex;align-items: center;">
+                <Icon size="20" type="ios-settings" />
+                <a href="/public/admin/index.html" style="color:#515a6e;">管理博客</a>
+              </MenuItem>
+            </template>
+            <template v-else>
+              <MenuItem name="5"  style="display:flex;align-items: center;">
                 <Icon size="20" type="logo-github"></Icon>
-                {{user.username}}
-              </template>
-              <MenuItem name="logout" :on-select="e=>alert(9090)">退出</MenuItem>
-            </Submenu>
-            <MenuItem name="5" v-else style="display:flex;align-items: center;">
-              <Icon size="20" type="logo-github"></Icon>
-              <a href="/api/github" style="color:#515a6e;">用github登陆</a>
-            </MenuItem>
-            <MenuItem v-if="user.username" name="8" style="display:flex;align-items: center;">
-              <Icon size="20" type="ios-settings" />
-              <a href="/public/admin/index.html" style="color:#515a6e;">管理博客</a>
-            </MenuItem>
+                <a href="/api/github/login" style="color:#515a6e;">用github登陆</a>
+              </MenuItem>
+              <MenuItem name="5as"  style="display:flex;align-items: center;">
+                <Icon style="font-size:22px;" type="ios-contact" />
+                <a href="#/login" style="color:#515a6e;">普通登陆</a>
+              </MenuItem>
+            </template>
           </div>
         </Menu>
       </Col>

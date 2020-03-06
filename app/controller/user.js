@@ -16,6 +16,12 @@ class UserController extends Controller {
     // ctx.body = ctx.session
   }
 
+  async localAuthCallback(){
+    //返回接口重定向不行,因为来源是一个ajax请求，无法重定向，只能发个消息让前端自己做重定向
+    // this.ctx.redirect('/#/')
+    this.ctx.body = {success:true}
+  }
+
   async show() {
     const ctx = this.ctx;
     ctx.body = await ctx.model.User.findByPk(toInt(ctx.params.id));
