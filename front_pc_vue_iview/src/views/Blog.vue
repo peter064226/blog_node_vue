@@ -1,14 +1,14 @@
 <template>
   <Row type="flex" justify="center">
     <Col span="13" style="margin-right:10px;">
-      <card style="min-height:800px;">
+      <card style="min-height:800px;" dis-hover>
         <div slot="title" class="title" @click="fuck">
           <span>{{blog.title}}</span>
           <div
             style="text-align:center;font-size:12px;color:gray;margin-top:5px;"
           >{{new Date(blog.createdAt).toLocaleString()}},{{blog.view_count}}</div>
         </div>
-        <div class="blog-content" style="padding:0 20px;" v-html="blog.content"></div>
+        <div class="blog-content" style="padding:0 20px;overflow: hidden;" v-html="blog.content"></div>
         <!-- <mavon-editor ref="md" style="height: 600px;" v-model="blog.content"></mavon-editor> -->
         <!-- <div v-html="$refs['md'] && $refs['md'].d_render"></div> -->
       </card>

@@ -33,13 +33,14 @@ axios.interceptors.response.use(function (response) {
   //   iview.Message.error('新增失败');
   // }
   //delete
-  if(error.response.config.method=='delete'){
-    iview.Message.error('删除失败');
-  }
+  // if(error.response.config.method=='delete'){
+  //   iview.Message.error('删除失败');
+  // }
   //put
-  if(error.response.config.method=='put'){
-    iview.Message.error('更新失败');
-  }
+  // if(error.response.config.method=='put'){
+  //   iview.Message.error('更新失败');
+  // }
+  iview.Message.error(error.response.data.message)
   return Promise.reject(error);
 });
 

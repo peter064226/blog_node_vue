@@ -4,6 +4,9 @@
       <template slot-scope="{ row }" slot="svg">
         <div style="font-size:60px;" v-html="row.svg"></div>
       </template>
+      <template slot-scope="{ row }" slot="type">
+        <div  >{{types.filter(e=>e.id==row.typeId)[0].name}}</div>
+      </template>
       <template slot-scope="{ row, index }" slot="action">
         <!-- <Button size="small" style="margin-right: 5px">详细</Button> -->
         <Button
@@ -23,10 +26,16 @@ import axios from "axios";
 export default {
   data() {
     return {
+      types:[],
       columns: [
         {
           title: "图标",
           slot: "svg",
+          width:100,
+        },
+        {
+          title: "分类",
+          slot: "type",
           width:100,
         },
         {
@@ -45,10 +54,15 @@ export default {
       list: []
     };
   },
-  created() {
-    this.getBlogs();
+  async created() {
+    await this.getTypes()
+    await this.getBlogs()
   },
   methods: {
+    async getTypes() {
+      const res = await axios.get("/api/types");
+      this.types = res.data;
+    },
     async getBlogs() {
       const res = await axios.get("/api/blogs");
       this.list = res.data;

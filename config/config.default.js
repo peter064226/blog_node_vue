@@ -85,8 +85,9 @@ module.exports = appInfo => {
 
   config.onerror={
     all(err, ctx) {
-      console.log(err)
-      // this.logger.error(err)
+      ctx.body = {message:err.message};
+      ctx.status = 500;
+      this.logger.error(err)
     },
   }
 

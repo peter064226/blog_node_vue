@@ -34,6 +34,10 @@
               <Icon size="20" type="logo-github"></Icon>
               <a href="/api/github" style="color:#515a6e;">用github登陆</a>
             </MenuItem>
+            <MenuItem  v-if="user.username" name="8" style="display:flex;align-items: center;">
+              <Icon size="20" type="ios-settings" />
+              <a href="/public/vue/index.html" style="color:#515a6e;">管理博客</a>
+            </MenuItem>
           </div>
         </Menu>
       </Col>

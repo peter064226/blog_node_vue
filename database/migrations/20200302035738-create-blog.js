@@ -7,6 +7,7 @@ module.exports = {
     await queryInterface.createTable('blog', {
       id: { type: INTEGER, primaryKey: true, autoIncrement: true },
       typeId:INTEGER,
+      userId: INTEGER,
       title:STRING,
       content:TEXT,
       intro:TEXT,

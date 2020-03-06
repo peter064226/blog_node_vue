@@ -24,8 +24,8 @@ class BlogController extends Controller {
       title: { type: 'string' },
       intro: { type: 'string' },
       content: { type: 'string' },
-  });
-    const blog = await this.ctx.service.blog.addBlog(this.ctx.request.body);
+    });
+    const blog = await this.ctx.service.blog.addBlog({...this.ctx.request.body,userId:this.ctx.user.id});
     this.ctx.status = 201;
     this.ctx.body = {success:true,msg:'增加成功'};
   }
