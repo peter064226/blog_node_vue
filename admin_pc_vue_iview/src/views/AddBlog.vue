@@ -11,16 +11,16 @@
       <FormItem label prop="svg">
         <Input v-model="blog.svg" placeholder="图标"></Input>
       </FormItem>
-      <FormItem label prop="title">
+      <FormItem label prop="intro">
         <Input v-model="blog.intro" type="textarea" :rows="4" placeholder="简介" />
       </FormItem>
-      <FormItem>
+      <FormItem prop="content">
         <mavon-editor style="height: 600px;z-index:0;" v-model="blog.content"></mavon-editor>
       </FormItem>
-      <FormItem label prop="title" style="display:flex;justify-content: flex-end;">
+      <FormItem label style="display:flex;justify-content: flex-end;">
         <div>
           <Button type="primary" @click="addBlog">保存</Button>
-          <Button style="margin-left: 8px">重置</Button>
+          <Button style="margin-left: 8px" @click="e=>$refs['blogForm'].resetFields()">重置</Button>
         </div>
       </FormItem>
     </Form>
@@ -100,6 +100,7 @@ export default {
       } else {
         const res = await axios.post("/api/blogs", this.blog);
         this.$refs['blogForm'].resetFields()
+        this.$Message.success(res.data);
       }
       // if (res.data.success) {
       //   this.$Message.success(res.data.msg);

@@ -28,9 +28,8 @@ class BlogService extends Service {
         const resBlog = blog.destroy()
         return await resBlog
     }
-    async updateBlog(blogObj) {
+    async updateBlog(id ,blogObj) {
         const ctx = this.ctx;
-        const id = parseInt(ctx.params.id);
         const blog = await ctx.model.Blog.findByPk(id,{
             include: [ this.ctx.model.User ]
         });

@@ -29,19 +29,14 @@ class BlogController extends Controller {
     });
     const blog = await this.ctx.service.blog.addBlog({...this.ctx.request.body,userId:this.ctx.user.id});
     this.ctx.status = 201;
-    this.ctx.body = {success:true,msg:'增加成功'};
+    this.ctx.body = '增加成功';
   }
 
   async update() {
     const ctx = this.ctx;
     const id = toInt(ctx.params.id);
-    const blog = await ctx.model.Blog.findByPk(id);
-    if (!blog) {
-      ctx.status = 404;
-      return;
-    }
-    await blog.update(ctx.request.body);
-    ctx.body = blog;
+    const blog = await ctx.service.blog.updateBlog(id,ctx.request.body);
+    ctx.body={success:true}
   }
 
   async destroy() {
