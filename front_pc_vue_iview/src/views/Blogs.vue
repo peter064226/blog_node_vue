@@ -125,8 +125,9 @@
       </Card>
       <Affix :offset-top="10">
         <Card style="margin-top:10px;">
-          <div style="font-size:13px;" v-for="ele in blogs" :key="ele.id">
-            <router-link :to="`/blog/${ele.id}`">{{ele.title}}</router-link>
+          <div slot="title" style="font-size:13px;color:gray;">最近更新</div>
+          <div style="font-size:13px;" v-for="(ele,idx) in blogs" :key="ele.id">
+            <router-link style="color: gray;" :to="`/blog/${ele.id}`">{{idx+1}}、{{ele.title}}</router-link>
           </div>
         </Card>
       </Affix>

@@ -21,6 +21,9 @@
             </MenuItem>
           </div>
         </Menu> -->
+        <div>
+          <a style="color:white;" href="/public/vue/index.html"><Icon type="md-arrow-back" />返回前台</a>
+        </div>
       </Header>
       <Layout>
         <Sider hide-trigger :style="{background: '#fff'}">

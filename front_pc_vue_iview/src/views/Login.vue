@@ -41,7 +41,7 @@ export default {
   methods:{
     async login(){
         let res = await axios.post('/api/local/login',this.user)
-        this.$router.push('/')
+        this.$router.push({name:'home'})
         setTimeout(e=>location.reload(),100)
         // if(res.data.success){
         //   this.$Message.success(res.data.msg)

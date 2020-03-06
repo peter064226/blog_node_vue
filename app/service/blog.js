@@ -23,9 +23,7 @@ class BlogService extends Service {
             include: [ this.ctx.model.User ]
         });
         // const user = await blog.getUser()
-        if (!blog) {
-            throw new Error('日志不存在')
-        }
+        if (!blog) throw new Error('日志不存在')
         if(this.ctx.user.id!=blog.user.id) throw new Error('不能删除非本人写的日志')
         const resBlog = blog.destroy()
         return await resBlog
@@ -33,8 +31,11 @@ class BlogService extends Service {
     async updateBlog(blogObj) {
         const ctx = this.ctx;
         const id = parseInt(ctx.params.id);
-        const blog = await ctx.model.Blog.findByPk(id);
-        if (!blog) { return; }
+        const blog = await ctx.model.Blog.findByPk(id,{
+            include: [ this.ctx.model.User ]
+        });
+        if (!blog) throw new Error('日志不存在')
+        if(this.ctx.user.id!=blog.user.id) throw new Error('不能修改非本人写的日志')
         // const { name } = ctx.request.body;
         await blog.update(blogObj);
     }

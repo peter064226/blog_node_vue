@@ -46,6 +46,19 @@ axios.interceptors.response.use(function (response) {
 
 Vue.config.productionTip = false
 
+iview.LoadingBar.config({
+  color: 'white',
+});
+
+router.beforeEach((to, from, next) => {
+  iview.LoadingBar.start();
+  next();
+});
+
+router.afterEach(route => {
+  iview.LoadingBar.finish();
+});
+
 new Vue({
   router,
   store,

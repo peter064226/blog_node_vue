@@ -16,7 +16,9 @@ class BlogController extends Controller {
   }
   
   async show() {
-    this.ctx.body = await this.ctx.service.blog.getBlog(toInt(this.ctx.params.id));
+    const blog = await this.ctx.service.blog.getBlog(toInt(this.ctx.params.id))
+    blog.update({viewCount:blog.viewCount+1});
+    this.ctx.body = blog
   }
 
   async create() {
