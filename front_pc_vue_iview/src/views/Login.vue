@@ -25,7 +25,9 @@
 </template>
 <script>
 import axios from 'axios'
+import {Row,Col,Card,Alert,Form,FormItem,Input,Button} from 'view-design'
 export default {
+  components:{Row,Col,Card,Alert,Form,FormItem,Input,Button},
   data() {
     return {
       user: {

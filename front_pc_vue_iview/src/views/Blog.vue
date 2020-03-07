@@ -6,7 +6,7 @@
           <span>{{blog.title}}</span>
           <div style="font-size:12px;color: #797979;margin-top: 10px;margin-bottom: -15px;">
             <Icon type="ios-contact" />
-            <span>&nbsp;{{blog.user.username}}&nbsp;</span>
+            <span>&nbsp;{{blog.user && blog.user.username}}&nbsp;</span>
             <Icon type="md-timer" />
             <span>&nbsp;{{new Date(blog.createdAt).toLocaleString()}}&nbsp;</span>
             <Icon type="ios-bonfire" />
@@ -80,8 +80,9 @@
 import Vue from "vue";
 import axios from "axios";
 import marked from "marked";
-
+import {Row,Col,Affix,Card,Avatar,Icon,Input,Button} from 'view-design'
 export default {
+  components:{Row,Col,Affix,Card,Avatar,Icon,Input,Button},
   data() {
     return {
       nav: "",

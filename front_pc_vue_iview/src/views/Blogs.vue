@@ -139,10 +139,11 @@
 // @ is an alias to /src
 import Blogs from "@/components/Blogs.vue";
 import axios from "axios";
+import {Row,Col,Affix,Card} from 'view-design'
 export default {
-  name: "Home",
+  name: "blogsPage",
   components: {
-    Blogs
+    Blogs,Row,Col,Affix,Card
   },
   data() {
     return {

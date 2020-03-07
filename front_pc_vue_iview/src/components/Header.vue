@@ -167,7 +167,9 @@
 
 <script>
 import axios from "axios";
+import {Row,Col,Menu,MenuItem,Icon,Submenu} from 'view-design'
 export default {
+  components:{Row,Col,Menu,MenuItem,Icon,Submenu},
   data() {
     return {
       user: {},

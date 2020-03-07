@@ -11,8 +11,9 @@
 
 <script>
 import Header from '@/components/Header.vue'
+import {BackTop} from 'view-design'
 export default {
-    components:{Header}
+    components:{Header,BackTop}
 }
 </script>
 

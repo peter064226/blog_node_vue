@@ -117,12 +117,12 @@
 
 <script>
 import { Trianglify } from "vue-trianglify";
-
+import {Card,Icon} from 'view-design'
 export default {
-  name: "HelloWorld",
+  name: "blogs",
   props: ["blogs"],
   components: {
-    Trianglify
+    Trianglify,Card,Icon
   },
   data() {
     return {
