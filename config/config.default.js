@@ -17,7 +17,10 @@ module.exports = appInfo => {
 
   // add your middleware config here
   config.middleware = [];
-
+  config.middleware=['compress' ]
+  config.compress={
+    threshold: 2048,
+  }
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
