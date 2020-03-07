@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Table :columns="columns" :data="list">
+    <Table :columns="columns" :loading="loading" :data="list">
       <template slot-scope="{ row }" slot="svg">
         <div style="font-size:60px;" v-html="row.svg"></div>
       </template>
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       types:[],
+      loading:false,
       columns: [
         {
           title: "图标",
@@ -68,12 +69,14 @@ export default {
   },
   methods: {
     async getTypes() {
-      const res = await axios.get("/api/types");
+      const res = await axios.get("/api/types")
       this.types = res.data;
     },
     async getBlogs() {
-      const res = await axios.get("/api/blogs");
-      this.list = res.data;
+      this.loading = true
+      const res = await axios.get("/api/blogs")
+      this.list = res.data
+      this.loading = false
     },
     async removeBlog(idx) {
         const res = await axios.delete(`/api/blogs/${this.list[idx].id}`)
@@ -83,5 +86,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
+.ivu-table table{
+  min-height: 300px;
+}
 </style>

@@ -4,9 +4,14 @@
       <card style="min-height:800px;" dis-hover>
         <div slot="title" class="title" @click="fuck">
           <span>{{blog.title}}</span>
-          <div
-            style="text-align:center;font-size:12px;color:gray;margin-top:5px;"
-          >{{new Date(blog.createdAt).toLocaleString()}},{{blog.view_count}}</div>
+          <div style="font-size:12px;color: #797979;margin-top: 10px;margin-bottom: -15px;">
+            <Icon type="ios-contact" />
+            <span>&nbsp;{{blog.user.username}}&nbsp;</span>
+            <Icon type="md-timer" />
+            <span>&nbsp;{{new Date(blog.createdAt).toLocaleString()}}&nbsp;</span>
+            <Icon type="ios-bonfire" />
+            <span>&nbsp;{{blog.viewCount}}&nbsp;</span>
+          </div>
         </div>
         <div class="blog-content" style="padding:0 20px;overflow: hidden;" v-html="blog.content"></div>
         <!-- <mavon-editor ref="md" style="height: 600px;" v-model="blog.content"></mavon-editor> -->
@@ -147,6 +152,9 @@ export default {
 };
 </script>
 <style>
+.avatar-box{
+  padding: 7px 0;
+}
 .md-nav h1 {
   font-size: 14px;
   cursor: pointer;

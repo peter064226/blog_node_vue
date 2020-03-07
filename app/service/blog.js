@@ -13,7 +13,12 @@ class BlogService extends Service {
         return blogs
     }
     async getBlog(id) {
-        return await this.ctx.model.Blog.findByPk(parseInt(id));
+        return await this.ctx.model.Blog.findByPk(parseInt(id),{
+            include: [ {
+                model:this.ctx.model.User,
+                attributes: ['username'],
+            } ]
+        });
     }
     async addBlog(blog) {
         return await this.ctx.model.Blog.create(blog);
