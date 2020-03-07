@@ -139,43 +139,48 @@
 // @ is an alias to /src
 import Blogs from "@/components/Blogs.vue";
 import axios from "axios";
-import {Row,Col,Affix,Card} from 'view-design'
+import { Row, Col, Affix, Card } from "view-design";
 export default {
   name: "blogsPage",
   components: {
-    Blogs,Row,Col,Affix,Card
+    Blogs,
+    Row,
+    Col,
+    Affix,
+    Card
   },
   data() {
     return {
-      blogs: []
+      blogs: [
+        {
+          id: 0,
+          title: "加载中"+'.'.repeat(50),
+          intro:
+            "加载中"+'.'.repeat(100),
+          svg:'<svg t="1583561721829" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5495" width="1em" height="1em"><path d="M859.4 106.6H168.8c-36.9 0-66.9-29.9-66.9-66.9V27.4h824.4v12.4c0 36.9-29.9 66.8-66.9 66.8z" fill="#429BCF" p-id="5496"></path><path d="M514.1 485.1c158.7 0 287.3-169.5 287.3-378.5H226.8c0 209.1 128.6 378.5 287.3 378.5z" fill="#D2EDF7" p-id="5497"></path><path d="M172.5 917.2h683.3c39 0 70.6 31.6 70.6 70.6v8.7H101.9v-8.7c0-39.1 31.6-70.6 70.6-70.6z" fill="#429BCF" p-id="5498"></path><path d="M514.1 538.6c-158.7 0-287.3 169.5-287.3 378.5h574.7c0-209-128.7-378.5-287.4-378.5z" fill="#D2EDF7" p-id="5499"></path><path d="M514.2 106.6v378.5c158.6-0.1 287.2-169.5 287.2-378.5H514.2z" fill="#83C6EF" p-id="5500"></path><path d="M486.4 435.6h55.5v162.5h-55.5z" fill="#D2EDF7" p-id="5501"></path><path d="M514.1 917.1h287.3c0-209-128.6-378.5-287.3-378.5v378.5z" fill="#83C6EF" p-id="5502"></path><path d="M514.1 435.6h27.7v162.5h-27.7z" fill="#83C6EF" p-id="5503"></path><path d="M249.1 253.2c43.5 136.2 145.7 231.9 265 231.9 119.2 0 221.5-95.7 265-231.9h-530z" fill="#FFD858" p-id="5504"></path><path d="M770.5 917.1c-58.9-68.6-151.7-113-256.3-113-104.7 0-197.5 44.5-256.4 113h512.7z" fill="#FDC223" p-id="5505"></path><path d="M501.6 616.3a12.6 28.2 0 1 0 25.2 0 12.6 28.2 0 1 0-25.2 0Z" fill="#FDC223" p-id="5506"></path><path d="M501.6 699.7a12.6 28.2 0 1 0 25.2 0 12.6 28.2 0 1 0-25.2 0Z" fill="#FDC223" p-id="5507"></path><path d="M501.5 796.2a12.6 28.2 0 1 0 25.2 0 12.6 28.2 0 1 0-25.2 0Z" fill="#FDC223" p-id="5508"></path><path d="M404.8 369.2c-35.2 0-69.2-2.2-101.7-5.9 52.5 74.9 127.5 121.9 211 121.9 118.6 0 220.4-94.7 264.2-229.8-54.5 66.2-200.9 113.8-373.5 113.8z" fill="#FDC223" p-id="5509"></path><path d="M514.1 27.4v79.3h351.8c33.4 0 60.4-27.1 60.4-60.4V27.4H514.1zM865.9 917.1H514.2v79.3h412.1v-18.8c0-33.4-27.1-60.5-60.4-60.5z" fill="#1A7FC0" p-id="5510"></path></svg>',
+          typeId: 0,
+          viewCount: 0,
+          user: { username: "加载中......" }
+        }
+      ]
     };
   },
   created() {
     // this.getArticles();
   },
   beforeRouteEnter(to, from, next) {
-    let typeId = to.params.typeId;
-    axios(`/api/blogs` + (typeId ? `?typeId=${typeId}` : ``)).then(res => {
-      next(vm => {
-        vm.blogs = res.data;
-      });
-    });
+    next(vm=>{
+      vm.getBlogs(to.params.typeId)
+    })
   },
   beforeRouteUpdate(to, from, next) {
-    let typeId = to.params.typeId;
-    console.log("typeId:" + typeId);
-    axios(`/api/blogs` + (typeId ? `?typeId=${typeId}` : ``)).then(res => {
-      this.blogs = res.data;
-    });
-    next();
+    this.getBlogs(to.params.typeId)
+    next()
   },
   methods: {
-    async getBlogs(to, from, next) {
-      let typeId = to.params.typeId;
+    async getBlogs(typeId) {
       axios(`/api/blogs` + (typeId ? `?typeId=${typeId}` : ``)).then(res => {
-        next(vm => {
-          vm.blogs = res.data;
-        });
+          this.blogs = res.data;
       });
     }
   }

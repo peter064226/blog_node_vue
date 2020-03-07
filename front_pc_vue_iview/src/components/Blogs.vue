@@ -39,7 +39,7 @@
               <Icon type="ios-contact" />
               <span>&nbsp;{{ele.user.username}}&nbsp;</span>
               <Icon type="md-timer" />
-              <span>&nbsp;{{new Date(ele.createdAt).toLocaleString()}}&nbsp;</span>
+              <span>&nbsp;{{ele.createdAt && new Date(ele.createdAt).toLocaleString()}}&nbsp;</span>
               <Icon type="ios-bonfire" />
               <span>&nbsp;{{ele.viewCount}}&nbsp;</span>
             </div>
