@@ -26,6 +26,9 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  config.static = {
+    gzip:true,
+  }
 
   config.sequelize = {
     dialect: 'mysql',

@@ -51,7 +51,12 @@
     </Layout>
   </div>
 </template>
-
+<script>
+import {Layout,Header,Content,Sider,MenuItem,Menu,Submenu,Icon} from 'view-design'
+export default {
+  components:{Layout,Header,Content,Sider,MenuItem,Menu,Submenu,Icon},
+}
+</script>
 <style >
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

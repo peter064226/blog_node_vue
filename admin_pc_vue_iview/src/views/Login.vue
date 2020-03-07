@@ -22,8 +22,10 @@
   </section>
 </template>
 <script>
+import {Row,Col,Card,Form,FormItem,Button} from 'view-design'
 import axios from 'axios'
 export default {
+  components:{Row,Col,Card,Form,FormItem,Button},
   data() {
     return {
       user: {

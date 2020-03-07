@@ -26,7 +26,9 @@
 
 <script>
 import axios from "axios";
+import {Table,Button} from 'view-design'
 export default {
+  components:{Table,Button},
   data() {
     return {
       types:[],

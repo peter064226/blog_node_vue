@@ -30,9 +30,10 @@
 import { mavonEditor } from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 import axios from "axios";
+import {Form,FormItem,Button,Input,Select,Option} from 'view-design'
 export default {
   name: "addBlog",
-  components: { mavonEditor },
+  components: { mavonEditor,Form,FormItem,Button,Input,Select, Option},
   data() {
     return {
       blog: {
