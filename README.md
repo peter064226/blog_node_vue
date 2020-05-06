@@ -9,8 +9,7 @@ see [egg docs][egg] for more detail.
 
 ![blog_web.png](blog_web.png)
 
-<img src="blog_h5.png" alt="blog_h5.png" style="zoom:50%;" />
-
+![blog_h5.png](blog_h5.png)
 
 ### Development
 
