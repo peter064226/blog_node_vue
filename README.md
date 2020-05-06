@@ -3,10 +3,14 @@
 
 
 ## QuickStart
+see [egg docs][egg] for more detail.
 
 <!-- add docs here for user -->
 
-see [egg docs][egg] for more detail.
+![blog_web.png](blog_web.png)
+
+<img src="blog_h5.png" alt="blog_h5.png" style="zoom:50%;" />
+
 
 ### Development
 
