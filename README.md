@@ -8,8 +8,8 @@ see [egg docs][egg] for more detail.
 <!-- add docs here for user -->
 
 ![blog_web.png](blog_web.png)
-
 ![blog_h5.png](blog_h5.png)
+![blog_admin.png](blog_admin.png)
 
 ### Development
 
