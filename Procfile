@@ -1,1 +1,1 @@
-web: export NODE_ENV='production' && export EGG_READY_TIMEOUT_ENV=100s && egg-scripts start 
+web: export NODE_ENV='production' && export EGG_READY_TIMEOUT_ENV=100000 && egg-scripts start 
