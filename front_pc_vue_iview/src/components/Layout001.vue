@@ -1,7 +1,9 @@
 <template>
     <div>
         <Header></Header>
-        <div style="min-height:800px;"><router-view /></div>
+        <div style="min-height:800px;">
+            <keep-alive><router-view /></keep-alive>
+        </div>
         <BackTop></BackTop>
         <footer style="line-height:100px;text-align:center;color:gray;">
           copyright 2020
