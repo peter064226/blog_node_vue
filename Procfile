@@ -1,1 +1,1 @@
-web: export NODE_ENV='production' && egg-scripts start
+web: export NODE_ENV='production' && egg-scripts start --port=11096 --daemon
